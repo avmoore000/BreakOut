@@ -20,9 +20,15 @@ all:
 clean:
 	$(RM) *.o *.~ *.out src/*.o 
 
-BreakOut: src/main.o
-	$(CC) $(CFLAGS) -o build/BreakOut src/main.o $(LIBS)
+BreakOut: src/main.o src/Utilities.o src/GameScreen.o
+	$(CC) $(CFLAGS) -o build/BreakOut src/main.o src/Utilities.o src/GameScreen.o $(LIBS)
 	$(RM) src/*.o
 
 main.o: src/main.cpp
 	$(CC) $(CFLAGS) -c src/main.cpp $(LIBS)
+
+Utilities.o: src/Utilities.h include/Utilities.cpp
+	$(CC) $(CFLAGS) -c src/Utilities.cpp $(LIBS)
+
+GameScreen.o: src/GameScreen.cpp include/GameScreen.h
+	$(CC) $(CFLAGS) -c src/GameScreen.cpp $(LIBS)

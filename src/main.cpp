@@ -7,6 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "../include/Utilities.h"
+#include "../include/GameScreen.h"
 
 using namespace std;
 
@@ -76,6 +78,17 @@ int main(int argc, char *argv[])
         glutInitWindowSize((int) width, (int) height);
 
         wd = glutCreateWindow("BreakOut");
+
+        // Initialize the screen object
+//        screen.setWidth(width);
+//        screen.setHeight(height);
+
+        // Register Functions 
+        glutReshapeFunc(reshape);
+        glutDisplayFunc(display);
+        glutMouseFunc(mouseButtons);
+        glutMotionFunc(mouseActiveMotion);
+        glutPassiveMotionFunc(mousePassiveMotion);
 
         // Start the main loop
         glutMainLoop();
